@@ -3,7 +3,7 @@ import IntroBlock from '../components/IntroBlock';
 import BlockCard from '../components/BlockCard';
 import { INTROS } from '../content/intros';
 import { NOVELS_DYNAMIC } from '../content/build';
-import PageShell from '../components/PageShell';
+// import PageShell from '../components/PageShell';
 const RS = '＼';
 
 export default function Novels(){

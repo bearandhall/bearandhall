@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export default function BlockCard({
   tone, to, children, right, onClick,

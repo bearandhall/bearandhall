@@ -81,7 +81,7 @@ function base(p: string) {
 }
 
 export const NOVELS_DYNAMIC: ArticleMeta[] = Object.entries(novelsJson).map(([jsonPath, meta]) => {
-  const b = base(jsonPath);
+  // const b = base(jsonPath);
   // 1) slug가 있으면 slug로 우선 매칭
   let url = Object.entries(novelsPdf).find(([pdfPath]) => base(pdfPath) === meta.slug)?.[1];
   // 2) 없으면 파일명(pdf 필드)에 맞춰 매칭

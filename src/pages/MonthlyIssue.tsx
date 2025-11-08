@@ -19,8 +19,8 @@ export default function MonthlyIssue() {
 
   const [view, setView] = useState<'pdf' | 'text'>(meta.pdf ? 'pdf' : 'text');
 // ✅ 모바일 전용: PDF 열기/닫기
-const [mShowPdf, setMShowPdf] = useState(false);
-  const [session, setSession] = useState<{ grants: string[] } | null>(null);
+// const [mShowPdf, setMShowPdf] = useState(false);
+  // const [session, setSession] = useState<{ grants: string[] } | null>(null);
   const [showUnlock, setShowUnlock] = useState(false);
 
   const refreshSession = () =>

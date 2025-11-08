@@ -11,7 +11,7 @@ const RS = '＼';
 export default function MonthlyYear() {
   const { year } = useParams<{ year: string }>();
   const yearEntry = MONTHLY_DYNAMIC.find(yy => String(yy.year) === String(year));
-
+  
   const [ask, setAsk] = useState<{ issue: string; allow: string[] } | null>(null);
   const [grants, setGrants] = useState<Record<string, true>>({});
 
@@ -89,7 +89,9 @@ export default function MonthlyYear() {
       {/* 잠금 해제 모달 */}
       {ask && (
         <EmailUnlockModal
-          allow={ask.allow}
+          // allow={ask.allow}
+          lockKey={`${year}-${ask.issue}`}
+          allowList={ask.allow}
           onSuccess={() => {
             // 성공 시 로컬 권한 저장 후 목록 리프레시
             localStorage.setItem(`grant:${year}-${ask.issue}`, '1');
