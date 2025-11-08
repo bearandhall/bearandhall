@@ -1,3 +1,4 @@
+
 type Tone = 'brand' | 'cat';
 
 export default function IntroBlock({

@@ -80,7 +80,7 @@ function base(p: string) {
   return p.split('/').pop()!.replace(/\.(json|pdf)$/i, '');
 }
 
-export const NOVELS_DYNAMIC: ArticleMeta[] = Object.entries(novelsJson).map(([jsonPath, meta]) => {
+export const NOVELS_DYNAMIC: ArticleMeta[] = Object.entries(novelsJson).map(([_, meta]) => {
   // const b = base(jsonPath);
   // 1) slug가 있으면 slug로 우선 매칭
   let url = Object.entries(novelsPdf).find(([pdfPath]) => base(pdfPath) === meta.slug)?.[1];
@@ -95,8 +95,8 @@ export const NOVELS_DYNAMIC: ArticleMeta[] = Object.entries(novelsJson).map(([js
 const miscJson = import.meta.glob('./misc/*.json', { eager: true, import: 'default' }) as Record<string, ArticleMeta>;
 const miscPdf  = import.meta.glob('./misc/*.pdf',  { eager: true, as: 'url' })         as Record<string, string>;
 
-export const MISC_DYNAMIC: ArticleMeta[] = Object.entries(miscJson).map(([jsonPath, meta]) => {
-  const b = base(jsonPath);
+export const MISC_DYNAMIC: ArticleMeta[] = Object.entries(miscJson).map(([_, meta]) => {
+  // const b = base(jsonPath);
   let url = Object.entries(miscPdf).find(([pdfPath]) => base(pdfPath) === meta.slug)?.[1];
   if (!url && meta.pdf) {
     url = Object.entries(miscPdf).find(([pdfPath]) => pdfPath.endsWith('/' + meta.pdf))?.[1];
