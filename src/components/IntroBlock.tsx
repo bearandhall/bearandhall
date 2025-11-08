@@ -1,19 +1,12 @@
+type Props = { text: string | string[] };
 
-type Tone = 'brand' | 'cat';
+export default function IntroBlock({ text }: Props) {
+  const raw = Array.isArray(text) ? text.join('\n') : (text || '');
+  const html = raw.replace(/\[red\](.*?)\[\/red\]/g, '<span class="hl-red">$1</span>');
 
-export default function IntroBlock({
-  tone = 'cat',
-  text,
-}: {
-  tone?: Tone;
-  text?: string | string[] | ReadonlyArray<string>;
-}) {
-  const blocks = typeof text === 'string' ? [text] : Array.from(text ?? []);
   return (
-    <div className={`block ${tone === 'brand' ? 'block-brand' : 'block-cat'}`}>
-      <div className="space-y-4">
-        {blocks.map((p, i) => <p key={i}>{p}</p>)}
-      </div>
+    <div className="block block-brand"> {/* ← 배경/패딩/모서리 상자 */}
+      <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
 }

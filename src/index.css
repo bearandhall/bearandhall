@@ -181,3 +181,5 @@ html, body, #root { overflow-x: hidden; }
     background-image: none !important;
   }
 }
+
+.hl-red { color:#d11; font-weight:600; }
