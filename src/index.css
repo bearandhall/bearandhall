@@ -1,0 +1,183 @@
+/* src/index.css */
+
+/* Tailwind: 한 번만! */
+@import "tailwindcss";
+
+/* 기본 */
+html, body, #root { height: 100%; }
+
+/* 전역 폰트 */
+:root{ --font-sans: 'Orbitron', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+*{ font-family: var(--font-sans); }
+
+/* 링크 */
+a { text-decoration: none; color: inherit; }
+
+/* 레이아웃 유틸 */
+.right-col { max-width: none; width: 100%; }
+@layer utilities {
+  .cover-tall { @apply h-[65vh] min-h-[640px] lg:h-[80vh] lg:min-h-[820px] overflow-hidden; }
+  .cover-img  { @apply w-full h-full object-cover; }
+  .left-col   { @apply relative z-10; } /* 클릭 덮임 방지 */
+  .pdf-col    { @apply relative z-0;  } /* PDF는 아래 */
+}
+
+/* 공통 블록/버튼 (컴포넌트 레이어) */
+@layer components {
+  .block          { @apply w-full px-4 py-3; }
+  .block-brand    { background:#fef08a; }
+  .block-cat      { background:#a5e8ff; }
+  .block-year     { background:#f7a4c0; }
+  .block-issue    { background:#b7f7b0; }
+  .block-article  { background:#f3f3f3; }
+
+  .btn        { @apply inline-flex items-center gap-2 px-3 py-1 border rounded hover:bg-black/5; }
+  .btn-ghost  { @apply opacity-50 cursor-default; }
+  .btn-link   { @apply underline underline-offset-4 decoration-2 hover:opacity-70; }
+
+  .article-text        { font-family: 'Orbitron', ui-sans-serif, system-ui, "Noto Sans KR", sans-serif; }
+  .article-text p      { white-space: pre-wrap; }
+}
+
+/* 인접 블록 위쪽 간격 제거 → 블록들이 '붙어' 보이게 */
+.stack > * + * { margin-top: 0 !important; }
+
+
+/* 위아래 모서리만 둥글게 (연속 블록이 한 덩어리처럼) */
+.rgroup > * { border-radius: 0 !important; }
+.rgroup > *:first-child { border-top-left-radius: 12px !important; border-top-right-radius: 12px !important; }
+.rgroup > *:last-child  { border-bottom-left-radius: 12px !important; border-bottom-right-radius: 12px !important; }
+
+/* 링크 스타일 (좌측 패널 하단 링크 버튼/리스트 공통) */
+.btn-link { text-decoration: underline; }
+
+/* src/index.css (맨 아래 아무 데나 추가) */
+
+/* 블록들을 '붙여' 보이게 하는 스택 래퍼 */
+.stack > * + * {
+  margin-top: 0;      /* 사이 간격 0 */
+}
+.stack > * {
+  border-radius: 0;   /* 둥근 모서리 방지 (원하는 디자인) */
+}
+
+
+/* src/index.css 또는 src/styles.css (기존 tailwind import 아래) */
+
+/* 블록들을 붙여서 쌓기 */
+.stack { display:flex; flex-direction:column; }
+.stack > * + * { margin-top:0 !important; }  /* 간격 제거 */
+
+.btn-link { text-decoration: underline; }
+
+/* 텍스트 버튼 */
+.btn {
+  padding: .25rem .75rem;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: .25rem;
+}
+.btn:hover { background: rgba(0,0,0,.05); }
+
+li {
+   list-style-type : none;
+}
+
+/* 각 페이지 기본 컨테이너 */
+.page-full {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+/* 중앙 이미지 1장만 보여줄 때 */
+.hero-img {
+  width: min(90vw, 900px);
+  height: auto;
+  object-fit: contain;
+}
+
+/* 배경 톤(원하는 색상으로 바꿔도 됨) */
+.bg-guro   { background: #f7de73; }   /* 노랑 톤 */
+.bg-techme { background: #47ef9b; }   /* 형광 그린 */
+.bg-horse  { background: #bcb6ff; }   /* 라벤더 */
+
+/* 좌측 내비 폭(아이콘 세로열이 차지하는 너비) */
+:root { --rail: 140px; }
+
+/* 공통 페이지 래퍼 */
+.page-full {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  /* 좌측 내비를 피해서 가운데 정렬되도록 패딩 */
+  padding: 24px 24px 24px calc(var(--rail) + 24px);
+}
+
+/* 좌측 내비 영역을 배경색으로 채우는 고정 박스 */
+.nav-rail-fill {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--rail);
+  height: 100vh;
+  background: var(--tone, #fff);
+  z-index: -1;                /* 실제 내비 아이콘 뒤쪽에 깔림 */
+}
+
+/* 페이지 톤(원하는 색으로 변경 가능) */
+.tone-guro   { --tone: #f7de73; }  /* 노랑 */
+.tone-techme { --tone: #47ef9b; }  /* 연초록 */
+.tone-horse  { --tone: #bcb6ff; }  /* 라벤더 */
+.tone-info   { --tone: #efefef; }  /* 연회색 */
+
+/* 중앙 이미지 사이즈 (아래 2번에서 설명) */
+.hero-img {
+  width: min(70vw, 640px);   /* 더 작게 */
+  max-height: 70vh;          /* 세로도 제한 */
+  height: auto;
+  object-fit: contain;
+}
+@media (min-width: 1024px){
+  .hero-img { width: min(55vw, 560px); }  /* 데스크톱에서 더 줄임 */
+}
+
+/* 모바일 가장자리 네비 공통 버튼 */
+.edgebtn {
+  position: fixed;
+  /* 살짝 밖으로 나가도 보이도록 */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.2));
+}
+
+/* 화면 가로 스크롤 방지 (9번) */
+html, body, #root { overflow-x: hidden; }
+
+
+/* src/styles/global.css */
+.mobile-bg {
+  background-image: url('/img/covers/cover-monthly.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 데스크탑에서는 끄기 */
+@media (min-width: 1024px) {
+  .mobile-bg { background: none !important; }
+}
+
+
+.mobile-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: var(--mobile-bg);
+}
+
+/* 데스크탑 이상(lg: 1024px~)에서는 배경 제거 */
+@media (min-width: 1024px) {
+  .mobile-bg {
+    background-image: none !important;
+  }
+}
