@@ -1,6 +1,3 @@
-// src/components/IntroBlock.tsx
-- import type { ReactNode } from 'react'; // ← 안 쓰면 삭제
-
 type Tone = 'brand' | 'cat';
 
 export default function IntroBlock({
