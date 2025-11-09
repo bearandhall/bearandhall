@@ -1,4 +1,4 @@
-type Props = { text: string | string[] };
+type Props = { text: string | string[] | ReadonlyArray<string>; };
 
 export default function IntroBlock({ text }: Props) {
   const raw = Array.isArray(text) ? text.join('\n') : (text || '');
