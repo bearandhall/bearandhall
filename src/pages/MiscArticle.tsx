@@ -33,6 +33,7 @@ export default function MiscArticle() {
             </a>
           </div>
         )}
+                  {!!(meta as any).links?.length && <LinksPanel links={(meta as any).links} />}
       </div>
 
       {/* 데스크탑 좌측(고정) */}
@@ -52,6 +53,7 @@ export default function MiscArticle() {
           )}
           {!!(meta as any).links?.length && <LinksPanel links={(meta as any).links} />}
         </div>
+        
       </div>
 
       {/* 오른쪽 본문 */}
@@ -88,7 +90,7 @@ export default function MiscArticle() {
         </div>
 
         {/* 모바일: 항상 텍스트 */}
-        <div className="lg:hidden block block-article">
+        <div className="lg:hidden block block-article w-full overflow-hidden">
           <ArticleRenderer title={meta.body.title} blocks={meta.body.blocks} />
         </div>
       </div>

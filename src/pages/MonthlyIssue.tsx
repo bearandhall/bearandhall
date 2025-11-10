@@ -58,6 +58,7 @@ export default function MonthlyIssue() {
             <a className="btn w-full" href={meta.pdf} target="_blank" rel="noreferrer">PDF 다운</a>
           </div>
         )}
+
       </div>
 
       {/* 데스크탑 좌측 고정 */}

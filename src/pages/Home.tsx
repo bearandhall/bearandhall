@@ -11,7 +11,7 @@ const RS = '＼';
 
 export default function Home() {
   return (
-    <PageShell mobileBg="/img/covers/cover-monthly.png">
+    <PageShell mobileBg="/img/covers/cover-home.png">
       {/* 데스크탑: 2단 그리드 / 모바일: 우측 블록만 보이도록 */}
       <div className="lg:grid lg:grid-cols-[520px_minmax(0,1fr)] gap-8 items-start "> 
         {/* 좌측 커버: 모바일에선 숨김 */}

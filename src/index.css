@@ -183,3 +183,27 @@ html, body, #root { overflow-x: hidden; }
 }
 
 .hl-red { color:#d11; font-weight:600; }
+
+
+html, body {
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
+}
+
+.right-col, .pdf-col {
+  max-width: 100%;
+}
+
+/* 3) 이미지/임베드가 항상 컨테이너에 맞게 */
+img, video, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 4) EdgeNav가 화면 밖에 나가더라도 문서를 밀지 않게 */
+.edgebtn {
+  position: fixed;       /* 이미 fixed 사용 중이면 OK */
+  will-change: transform;
+  /* 필요하면 아래로 보정 (음수 offset을 써도 body에 영향 X) */
+}
