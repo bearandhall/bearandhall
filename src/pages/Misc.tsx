@@ -4,6 +4,7 @@ import BlockCard from '../components/BlockCard';
 import { INTROS } from '../content/intros';
 import { MISC_DYNAMIC } from '../content/build';
 // import PageShell from '../components/PageShell';
+import { toMutableText } from '../utils/text';
 const RS = '＼';
 
 export default function Misc(){
@@ -19,7 +20,8 @@ export default function Misc(){
           {label:`${RS} 기타`, tone:'cat', to:'/misc'},
         ]}/>
         <div className="mt-4 space-y-0">
-          <IntroBlock tone="cat" text={INTROS.misc}/>
+          {/* <IntroBlock tone="cat" text={INTROS.misc}/> */}
+          <IntroBlock tone="cat" text={toMutableText(INTROS.monthly)} />
         </div>
 
         <div className="mt-6 space-y-0">

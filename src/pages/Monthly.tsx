@@ -5,6 +5,7 @@ import IntroBlock from '../components/IntroBlock';
 import BlockCard from '../components/BlockCard';
 import { INTROS } from '../content/intros';
 import { MONTHLY_DYNAMIC } from '../content/build';
+import { toMutableText } from '../utils/text';
 
 const RS = '＼';
 
@@ -21,7 +22,11 @@ export default function Monthly(){
             {label:'곰과회당', tone:'brand', to:'/'},
             {label:`${RS} 월간 보수`, tone:'cat'}
           ]}/>
-          <div className="mt-3"><IntroBlock tone="cat" text={INTROS.monthly}/></div>
+          <div className="mt-3">
+
+            <IntroBlock tone="cat" text={toMutableText(INTROS.monthly)} />
+          </div>
+          
 
           <div className="mt-8 space-y-3">
             {MONTHLY_DYNAMIC.map(y=>(

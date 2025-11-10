@@ -4,6 +4,7 @@ import BlockCard from '../components/BlockCard';
 import { INTROS } from '../content/intros';
 import { NOVELS_DYNAMIC } from '../content/build';
 // import PageShell from '../components/PageShell';
+import { toMutableText } from '../utils/text';
 const RS = '＼';
 
 export default function Novels(){
@@ -20,7 +21,8 @@ export default function Novels(){
           {label:`${RS} 소설`, tone:'cat', to:'/novels'},
         ]}/>
         <div className="mt-4 space-y-0">
-          <IntroBlock tone="cat" text={INTROS.novels}/>
+          {/* <IntroBlock tone="cat" text={INTROS.novels}/> */}
+          <IntroBlock tone="cat" text={toMutableText(INTROS.monthly)} />
         </div>
         <div className="mt-6 space-y-0">
           {NOVELS_DYNAMIC.map(a=>(

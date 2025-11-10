@@ -4,6 +4,7 @@ import BreadcrumbStack from '../components/BreadcrumbStack';
 import BlockCard from '../components/BlockCard';
 import IntroBlock from '../components/IntroBlock';
 import { INTROS } from '../content/intros';
+import { toMutableText } from '../utils/text';
 
 const RS = '＼';
 
@@ -22,7 +23,8 @@ export default function Home() {
         <div className="right-col px-4 py-6 lg:px-0">
           <BreadcrumbStack items={[{label:'곰과회당', tone:'brand'}]} />
           <div className="mt-3">
-            <IntroBlock tone="brand" text={INTROS.home} />
+            {/* <IntroBlock tone="brand" text={INTROS.home} /> */}
+            <IntroBlock tone="brand" text={toMutableText(INTROS.monthly)} />
           </div>
 
           <div className="mt-8 space-y-3">
