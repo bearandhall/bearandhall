@@ -22,7 +22,7 @@ export default function Novels(){
         ]}/>
         <div className="mt-4 space-y-0">
           {/* <IntroBlock tone="cat" text={INTROS.novels}/> */}
-          <IntroBlock tone="cat" text={toMutableText(INTROS.monthly)} />
+          <IntroBlock tone="cat" text={toMutableText(INTROS.novels)} />
         </div>
         <div className="mt-6 space-y-0">
           {NOVELS_DYNAMIC.map(a=>(

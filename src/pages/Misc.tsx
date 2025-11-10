@@ -21,7 +21,7 @@ export default function Misc(){
         ]}/>
         <div className="mt-4 space-y-0">
           {/* <IntroBlock tone="cat" text={INTROS.misc}/> */}
-          <IntroBlock tone="cat" text={toMutableText(INTROS.monthly)} />
+          <IntroBlock tone="cat" text={toMutableText(INTROS.misc)} />
         </div>
 
         <div className="mt-6 space-y-0">

@@ -6,6 +6,7 @@ import IntroBlock from '../components/IntroBlock';
 import { INTROS } from '../content/intros';
 import { toMutableText } from '../utils/text';
 
+
 const RS = '＼';
 
 export default function Home() {
@@ -24,7 +25,7 @@ export default function Home() {
           <BreadcrumbStack items={[{label:'곰과회당', tone:'brand'}]} />
           <div className="mt-3">
             {/* <IntroBlock tone="brand" text={INTROS.home} /> */}
-            <IntroBlock tone="brand" text={toMutableText(INTROS.monthly)} />
+            <IntroBlock tone="brand" text={toMutableText(INTROS.home)} />
           </div>
 
           <div className="mt-8 space-y-3">

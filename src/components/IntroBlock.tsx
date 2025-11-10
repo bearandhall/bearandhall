@@ -1,23 +1,30 @@
-type Tone = 'brand' | 'cat' | 'year' | 'issue';
+// src/components/IntroBlock.tsx
+import type { ReactNode } from 'react';
 
-type Props = {
-  text: string | string[] | ReadonlyArray<string>;
-  tone?: Tone;          // ← 배경/톤
-  className?: string;   // ← 필요 시 추가 클래스
+type Tone = 'brand' | 'cat' | 'year' | 'issue' | 'article';
+const toneClass: Record<Tone, string> = {
+  brand: 'block-brand',
+  cat: 'block-cat',
+  year: 'block-year',
+  issue: 'block-issue',
+  article: 'block-article',
 };
 
-export default function IntroBlock({ text, tone = 'brand', className }: Props) {
-  const raw  = Array.isArray(text) ? text.join('\n') : (text || '');
+type Props = {
+  text: string | ReadonlyArray<string> | string[];
+  tone?: Tone;
+};
+
+export default function IntroBlock({ text, tone = 'brand' }: Props) {
+  // ✅ string으로 고정
+  const raw: string = Array.isArray(text)
+    ? (text as ReadonlyArray<string>).join('\n')
+    : (text ?? '');
+
   const html = raw.replace(/\[red\](.*?)\[\/red\]/g, '<span class="hl-red">$1</span>');
 
-  // tone → 대응하는 블록 클래스
-  const toneClass =
-    tone === 'cat'   ? 'block-cat'   :
-    tone === 'year'  ? 'block-year'  :
-    tone === 'issue' ? 'block-issue' : 'block-brand';
-
   return (
-    <div className={`block ${toneClass} ${className ?? ''}`}>
+    <div className={`block ${toneClass[tone]}`}>
       <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
