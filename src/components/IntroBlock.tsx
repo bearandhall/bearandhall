@@ -11,16 +11,19 @@ const toneClass: Record<Tone, string> = {
 };
 
 type Props = {
+  // ✅ readonly 배열도 허용
   text: string | ReadonlyArray<string> | string[];
   tone?: Tone;
 };
 
-export default function IntroBlock({ text, tone = 'brand' }: Props) {
-  // ✅ string으로 고정
-  const raw: string = Array.isArray(text)
-    ? (text as ReadonlyArray<string>).join('\n')
-    : (text ?? '');
+function normalizeToString(input: string | ReadonlyArray<string> | string[]): string {
+  if (Array.isArray(input)) return [...input].join('\n'); // ✅ readonly → 복사 후 join
+  return input ?? '';
+}
 
+export default function IntroBlock({ text, tone = 'brand' }: Props) {
+  // ✅ 여기서 확실히 string으로 만듭니다
+  const raw: string = normalizeToString(text);
   const html = raw.replace(/\[red\](.*?)\[\/red\]/g, '<span class="hl-red">$1</span>');
 
   return (
